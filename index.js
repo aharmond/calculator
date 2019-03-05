@@ -77,6 +77,9 @@ equals.addEventListener("click", function(){
 decimal.addEventListener("click", function(){
   decimalChoice(this)
 })
+valence.addEventListener("click", function(){
+  valenceChoice(this)
+})
 clear.addEventListener("click", function(){
   leftHand = ""
   rightHand = ""
@@ -158,6 +161,35 @@ function decimalChoice(decimal) {
     }
     else if(leftHand !== "" && middleHand === ""){
       leftHand = leftHand + decimal.innerHTML
+    }
+  }
+}
+
+function valenceChoice(valence) {
+  if(leftHand === "") {
+    error.innerHTML = "Please enter an integer."
+  }
+  else if(leftHand !== "" && middleHand === "") {
+    if(leftHand.includes('-')) {
+      leftHand.replace('-', '')
+      screen.innerHTML = leftHand
+    }
+    else { 
+      leftHand = '-' + leftHand
+      screen.innerHTML = leftHand
+    }
+  }
+  else if(rightHand == "") {
+    error.innerHTML = "Please enter an integer."
+  }
+  else if(rightHand !== "") {
+    if(rightHand.includes('-')) {
+      rightHand.replace('-', '')
+      screen.innerHTML = leftHand + middleHand + rightHand
+    }
+    else {
+      rightHand = '-' + rightHand
+      screen.innerHTML = leftHand + middleHand + rightHand
     }
   }
 }
