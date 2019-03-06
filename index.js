@@ -26,6 +26,7 @@ var error = document.getElementById('error')
 var leftHand = ""
 var rightHand = ""
 var middleHand = ""
+var percentage = 0
 
 one.addEventListener("click", function(){
   integerChoice(this)
@@ -79,6 +80,9 @@ decimal.addEventListener("click", function(){
 })
 valence.addEventListener("click", function(){
   valenceChoice(this)
+})
+percent.addEventListener("click", function(){
+  percentChoice(this)
 })
 clear.addEventListener("click", function(){
   leftHand = ""
@@ -191,5 +195,24 @@ function valenceChoice(valence) {
       rightHand = '-' + rightHand
       screen.innerHTML = leftHand + middleHand + rightHand
     }
+  }
+}
+
+function percentChoice(percent) {
+  if(leftHand === "") {
+    error.innerHTML = "Please enter an integer."
+  }
+  else if(leftHand !== "" && middleHand === "") {
+    percentage = leftHand / 100
+    leftHand = percentage.toString()
+    screen.innerHTML = percentage
+  }
+  else if(rightHand == "") {
+    error.innerHTML = "Please enter an integer."
+  }
+  else if(rightHand !== "") {
+      percentage = rightHand / 100
+      rightHand = percentage.toString()
+      screen.innerHTML = leftHand + middleHand + rightHand
   }
 }
